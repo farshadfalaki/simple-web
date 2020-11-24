@@ -10,4 +10,13 @@ node{
 	stage('build docker image'){
 		sh 'docker build -t simple-web-image .'
 	}
+	
+	stage('Push to docker hub'){
+		script{
+			docker.withRegistry('',dockerHubCred){
+				dockerImage.push("$BUILD_NUMBER")
+				dockerImage.push('latest')
+			}
+		}
+	}
 }
