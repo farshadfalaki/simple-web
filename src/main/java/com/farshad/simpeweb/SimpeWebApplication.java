@@ -15,7 +15,7 @@ public class SimpeWebApplication {
 
     @GetMapping(value = "/simpe/hi")
     public String sayHi(){
-        return "Hallo!";
+        return "Hallo! CI/CD";
     }
 
 }
