@@ -25,7 +25,9 @@ node{
         stage('Deploy to k8s'){
 		sh 'whoami'
 		sh 'pwd'
+		sh 'kubectl apply -f k8s-deploy.yaml'	
 		sh 'kubectl version'
+
         }
 
 }
