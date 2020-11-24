@@ -16,17 +16,19 @@ node{
 	stage('Push to docker hub'){
 		
 			echo "Trying to push to docker hub"
-			docker.withRegistry('','dockerHubCred'){
+	/*		docker.withRegistry('','dockerHubCred'){
 				app.push("${env.BUILD_NUMBER}")
 				app.push('latest')
 			}
-		
+	
+*/	
 	}
         stage('Deploy to k8s'){
 		sh 'whoami'
 		sh 'pwd'
-		sh 'kubectl apply -f k8s-deploy.yaml'	
-		sh 'kubectl version'
+		kubernetesDeploy(configs: "k8s-deploy.yaml", kubeconfigId: "mykubeconfig")
+		
+	
 
         }
 
