@@ -16,7 +16,7 @@ node{
 	stage('Push to docker hub'){
 		
 			echo "Trying to push to docker hub"
-			docker.withRegistry('https://registry.hub.docker.com','dockerHubCred'){
+			docker.withRegistry('','dockerHubCred'){
 				app.push("${env.BUILD_NUMBER}")
 				app.push('latest')
 			}
