@@ -1,4 +1,5 @@
 node{
+	def app
 	stage('pull code'){
 		git 'https://github.com/farshadfalaki/simple-web.git'
 	}
@@ -8,15 +9,17 @@ node{
 	}
 	
 	stage('build docker image'){
-		sh 'docker build -t simple-web-image .'
+		/* sh 'docker build -t simple-web-image .' */
+		app = docker.build("falakidocker/simple-web-image")
 	}
 	
 	stage('Push to docker hub'){
-		script{
-			docker.withRegistry('',dockerHubCred){
-				dockerImage.push("$BUILD_NUMBER")
-				dockerImage.push('latest')
+		
+			echo "Trying to push to docker hub"
+			docker.withRegistry('https://registry.hub.docker.com','dockerHubCred'){
+				app.push("${env.BUILD_NUMBER}")
+				app.push('latest')
 			}
-		}
+		
 	}
 }
