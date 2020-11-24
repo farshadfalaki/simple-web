@@ -22,4 +22,10 @@ node{
 			}
 		
 	}
+        stage('Deploy to k8s'){
+		sh 'whoami'
+		sh 'pwd'
+		sh 'kubectl version'
+        }
+
 }
