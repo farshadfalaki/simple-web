@@ -26,7 +26,7 @@ node{
         stage('Deploy to k8s'){
 		sh 'whoami'
 		sh 'pwd'
-		kubernetesDeploy(configs: "k8s-deploy.yaml", kubeconfigId: "mykubeconfig")
+		kubernetesDeploy(configs: "k8s-deploy.yaml", kubeconfigId: "mkc1")
 		
 	
 
