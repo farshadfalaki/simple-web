@@ -32,7 +32,7 @@ node{
 				}
 			sh 'kubectl apply -f k8s-deploy.yaml' */
 			sshagent(['ff-localhost']) {
-				sh 'scp -o StrictHostKeyChecking=no k8s-deploy.yaml farshad@localhost:/home/farshad/depFiles/'
+				sh 'scp -o StrictHostKeyChecking=no k8s-deploy.yaml farshad@localhost:/home/farshad/'
 				sh 'ssh farshad@localhost kubectl apply -f k8s-deploy.yaml'
 			}	
 			
