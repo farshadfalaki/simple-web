@@ -16,12 +16,12 @@ node{
 	stage('Push to docker hub'){
 		
 			echo "Trying to push to docker hub"
-	/*		docker.withRegistry('','dockerHubCred'){
+			docker.withRegistry('','dockerHubCred'){
 				app.push("${env.BUILD_NUMBER}")
 				app.push('latest')
 			}
 	
-*/	
+	
 	}
         stage('Deploy to k8s'){
 			sh 'whoami'
