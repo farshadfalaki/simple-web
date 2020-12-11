@@ -27,9 +27,10 @@ node{
 		sh 'whoami'
 		sh 'pwd'
 		/*kubernetesDeploy(configs: "k8s-deploy.yaml", kubeconfigId: "mkc1")*/
-		withKubeConfig([credentialsId: 'mkc1', serverUrl: 'https://192.168.49.2:8443']) {
+		/*withKubeConfig([credentialsId: 'mkc1', serverUrl: 'https://192.168.49.2:8443']) {
       			sh 'kubectl apply -f k8s-deploy.yaml'
-    		}
+    		}*/
+		sh 'kubectl apply -f k8s-deploy.yaml'	
 		
 	
 
